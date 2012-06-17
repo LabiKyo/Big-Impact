@@ -1,0 +1,25 @@
+{
+  "name": "BigImpact",
+  "version": "0.0.1",
+  "author": "Labi Kyo <labikyo@gmail.com>",
+  "scripts": {
+    "test": "cake test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LabiKyo/Big-Impact"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*",
+    "cucumber": "*",
+    "underscore": "*",
+    "jade": "*",
+    "less": "*"
+  },
+  "engine": {
+    "node": ">=0.6.18"
+  }
+}
