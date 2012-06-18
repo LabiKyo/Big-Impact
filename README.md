@@ -22,3 +22,13 @@
     └── vendor                  ..... 引用的第三方库
         ├── js                  ..... 包括underscore,backbone,jade-runtime
         └── less                ..... bootstrap
+
+## Cakefile Tasks说明
+
+* test 手动单次运行测试
+* compile:less 手动单次编译less
+* compile:coffee 手动单次编译coffee-script
+* compile:jade 手动单次编译jade
+* compile 手动单次编译整个项目
+* **watch 开发用，自动重新编译、运行测试**
+
