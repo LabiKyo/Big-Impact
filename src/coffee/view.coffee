@@ -61,3 +61,15 @@ class window.View.Profile extends Backbone.View
   render: =>
     @$el.html @template()
     @
+
+class window.View.editProfile extends Backbone.View
+  template:Template.editProfile
+  render: =>
+    console.log 'render profile', @template()
+    @$el.html @template()
+    @
+
+$ ->
+  window.view.layout = new View.Layout
+    el: $ 'body'
+  view.layout.render()

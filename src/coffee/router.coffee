@@ -6,6 +6,7 @@ class window.Router.App extends Backbone.Router
     'activities': 'activities'
     'admin': 'admin'
     'profile': 'profile'
+    'editProfile':'editProfile'
 
   index: =>
     unless view.index?
@@ -30,3 +31,10 @@ class window.Router.App extends Backbone.Router
       window.view.profile = new View.Profile
         el: $ 'section#content'
     view.profile.render()
+  
+  editProfile: =>
+    console.log 'router: editProfile'
+    unless view.editProfile?
+      window.view.editProfile = new View.editProfile
+        el: $ 'section#content'
+    view.editProfile.render()
