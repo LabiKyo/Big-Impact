@@ -1,0 +1,2 @@
+window.Model = {}
+window.model = {}

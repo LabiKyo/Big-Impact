@@ -32,7 +32,12 @@ task 'compile:less', 'compile less files', ->
 
 task 'compile:coffee', 'compile coffee-scripts', ->
   exec 'coffee -b -j build/js/main.js -c
-      src/coffee/main.coffee', (err, output) ->
+      src/coffee/model.coffee
+      src/coffee/collection.coffee
+      src/coffee/view.coffee
+      src/coffee/router.coffee
+      src/coffee/main.coffee
+    ', (err, output) ->
     if err
       console.log err
     else
@@ -54,6 +59,7 @@ task 'compile:jade', 'compile jade to javascript function', ->
     target += "window.Template.#{name} = #{fn.toString()};\n\n"
 
   fs.writeFileSync './build/js/templates.js', target, 'utf-8'
+  console.log 'compile:jade success!'
 
 task 'compile', 'compile all', ->
   invoke 'compile:less'

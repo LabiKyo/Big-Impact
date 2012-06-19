@@ -1,2 +1,3 @@
 $ ->
-  $('body').html window.Template.index({title: 'test title'})
+  window.router = new Router.App
+  Backbone.history.start()
