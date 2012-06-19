@@ -15,10 +15,8 @@
     ├── package.json            ..... npm的包说明文件，可以用npm install安装相关依赖
     ├── src                     ..... 开发的源代码所在
     │   ├── coffee              ..... CoffeeScript目录
-    │   │   └── main.coffee
-    │   ├── jade                ..... Jade目录
+    │   ├── jade                ..... Jade目录，每个.jade文件都会生成一个对应的js函数
     │   └── less                ..... Less目录
-    │       └── main.less
     └── vendor                  ..... 引用的第三方库
         ├── js                  ..... 包括underscore,backbone,jade-runtime
         └── less                ..... bootstrap
