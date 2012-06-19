@@ -1,5 +1,13 @@
 window.View = {}
 window.view = {}
+
+class window.View.Layout extends Backbone.View
+  template: Template.layout
+  render: =>
+    console.log 'render layout', @template()
+    @$el.html @template()
+    @
+
 class window.View.Index extends Backbone.View
   template: Template.index
   render: =>
@@ -14,17 +22,7 @@ class window.View.Profile extends Backbone.View
     @$el.html @template()
     @
 
-class window.View.Feed extends Backbone.View
-  template: Template.feed
-  render: =>
-    console.log 'render feed', @template()
-    @$el.html @template()
-    @
-
 $ ->
-  window.view.index = new View.Index
-    el: $ 'section#application'
-  window.view.profile = new View.Profile
-    el: $ 'section#application'
-  window.view.feed = new View.Feed
-    el: $ 'section#application'
+  window.view.layout = new View.Layout
+    el: $ 'body'
+  view.layout.render()
