@@ -6,10 +6,10 @@ page = (title, callback) ->
     unless view[title]?
       window.view[title] = new View[Title]
         el: $ 'section#content'
-      collection.navbar[title]()
-      view[title].render()
-      view.navbar.render()
-      callback?()
+    collection.navbar[title]()
+    view[title].render()
+    view.navbar.render()
+    callback?()
 
   fn
 
