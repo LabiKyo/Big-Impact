@@ -1,14 +1,16 @@
-form.form-horizontal.well(method='post', action='/login')
+form.form-horizontal.well.span6.offset3
   fieldset
     legend Login
     .control-group.error
       .controls
     .control-group
-      label.control-label(for='email') Email
+      label.control-label(for='email')
+        strong Email
       .controls
         input.input-medium(name='email',type='email',placeholder='Email')
     .control-group
-      label.control-label(for='password') Password
+      label.control-label(for='password')
+        strong Password
       .controls
         input.input-medium(name='password',type='password',placeholder='Password')
     .control-group
@@ -17,5 +19,4 @@ form.form-horizontal.well(method='post', action='/login')
         input(type='checkbox',name='isAdmin')
     .control-group
       .controls
-        button#login.btn(type='submit') Login
-
+        button#login.btn.btn-primary.btn-medium.span1(type='submit') Login
