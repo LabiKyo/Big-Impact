@@ -1,1 +1,20 @@
-h1 index
+form.form-horizontal.well(method='post', action='/login')
+  fieldset
+    legend Login
+    .control-group
+      label.control-label(for='email') Email
+      .controls
+        input.input-medium(name='email',type='email',placeholder='Email')
+    .control-group
+      label.control-label(for='password') Password
+      .controls
+        input.input-medium(name='password',type='password',placeholder='Password')
+    .control-group
+      .controls
+        label
+          input(type='checkbox',name='isAdmin')
+          | As an admmin
+    .control-group
+      .controls
+        button#login.btn(type='submit') Login
+  
