@@ -31,13 +31,23 @@ task 'compile:less', 'compile less files', ->
       console.log 'compile:less success!'
 
 task 'compile:coffee', 'compile coffee-scripts', ->
-  exec 'coffee -b -j build/js/main.js -c
-      src/coffee/model.coffee
-      src/coffee/collection.coffee
-      src/coffee/view.coffee
-      src/coffee/router.coffee
-      src/coffee/main.coffee
-    ', (err, output) ->
+  files = [
+    'view/layout',
+    'view/navbar',
+    'view/index',
+    'view/admin',
+    'view/activities',
+    'view/profile',
+    'model',
+    'collection',
+    'router',
+    'sync',
+    'main'
+  ]
+  script = 'coffee -bj build/js/main.js -c '
+  for file in files
+    script += "src/coffee/#{file}.coffee "
+  exec script, (err, output) ->
     if err
       console.log err
     else
@@ -69,14 +79,14 @@ task 'compile', 'compile all', ->
 # watch
 task 'watch', 'watch file changes and auto run tasks', ->
   invoke 'compile'
-  coffee_watcher = fs.watch './src/coffee', (event, filename) ->
-    #console.log event, filename
+  fs.watch './src/coffee', (event, filename) ->
+    invoke 'compile:coffee'
+
+  fs.watch './src/coffee/view', (event, filename) ->
     invoke 'compile:coffee'
 
   less_watcher = fs.watch './src/less', (event, filename) ->
-    #console.log event, filename
     invoke 'compile:less'
 
   jade_watcher = fs.watch './src/jade', (event, filename) ->
-    #console.log event, filename
     invoke 'compile:jade'

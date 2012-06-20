@@ -20,9 +20,6 @@ class window.Router.App extends Backbone.Router
     'profile': 'profile'
 
   index: page 'index'
-
   activities: page 'activities'
-
   admin: page 'admin'
-
   profile: page 'profile'
