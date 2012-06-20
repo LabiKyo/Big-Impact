@@ -1,5 +1,17 @@
 window.Router = {}
 
+page = (title, callback) ->
+  Title = title[0].toUpperCase() + title[1..-1]
+  fn = ->
+    unless view[title]?
+      window.view[title] = new View[Title]
+        el: $ 'section#content'
+      model.navbar[title]()
+      view[title].render()
+      callback?()
+
+  fn
+
 class window.Router.App extends Backbone.Router
   routes:
     '': 'index'
@@ -7,30 +19,10 @@ class window.Router.App extends Backbone.Router
     'admin': 'admin'
     'profile': 'profile'
 
-  index: =>
-    unless view.index?
-      window.view.index = new View.Index
-        el: $ 'section#content'
-    model.navbar.index()
-    view.index.render()
+  index: page 'index'
 
-  activities: =>
-    unless view.activities?
-      window.view.activities = new View.Activities
-        el: $ 'section#content'
-    model.navbar.activities()
-    view.activities.render()
+  activities: page 'activities'
 
-  admin: =>
-    unless view.admin?
-      window.view.admin = new View.Admin
-        el: $ 'section#content'
-    model.navbar.admin()
-    view.admin.render()
+  admin: page 'admin'
 
-  profile: =>
-    unless view.profile?
-      window.view.profile = new View.Profile
-        el: $ 'section#content'
-    model.navbar.profile()
-    view.profile.render()
+  profile: page 'profile'
