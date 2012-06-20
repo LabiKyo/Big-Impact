@@ -5,6 +5,19 @@ class window.View.Layout extends Backbone.View
   template: Template.layout
   render: =>
     @$el.html @template()
+    @navbar = window.view.navbar = new View.NavBar
+      el: $ 'ul.nav'
+    @navbar.render()
+    @
+
+class window.View.NavBar extends Backbone.View
+  initialize: =>
+    @model = window.model.navbar = new Model.NavBar
+  template: Template.navbar
+  render: =>
+    template = @template
+      items: @model.attributes
+    @$el.html template
     @
 
 class window.View.Index extends Backbone.View
@@ -46,7 +59,6 @@ class window.View.Index extends Backbone.View
 class window.View.Activities extends Backbone.View
   template: Template.activities
   render: =>
-    console.log @$el
     @$el.html @template()
     @
 

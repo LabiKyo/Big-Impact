@@ -1,0 +1,4 @@
+each value, item in items
+  if value.is_show
+    li(class="#{value.is_active ? 'active' : ''}")
+      a(href="##{item}")= value.name
