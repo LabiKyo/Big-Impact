@@ -1,3 +1,6 @@
+window.View = {}
+window.view = {}
+
 class window.View.Layout extends Backbone.View
   template: Template.layout
   render: =>
@@ -5,6 +8,3 @@ class window.View.Layout extends Backbone.View
     @navbar = window.view.navbar = new View.NavBar
       el: $ 'ul.nav'
     @navbar.render()
-    @
-
-
