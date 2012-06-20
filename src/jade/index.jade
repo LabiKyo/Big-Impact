@@ -1,6 +1,8 @@
 form.form-horizontal.well(method='post', action='/login')
   fieldset
     legend Login
+    .control-group.error
+      .controls
     .control-group
       label.control-label(for='email') Email
       .controls
@@ -10,11 +12,10 @@ form.form-horizontal.well(method='post', action='/login')
       .controls
         input.input-medium(name='password',type='password',placeholder='Password')
     .control-group
+      label.control-label(for='is-admin') I'm admin
       .controls
-        label
-          input(type='checkbox',name='isAdmin')
-          | As an admmin
+        input(type='checkbox',name='isAdmin')
     .control-group
       .controls
         button#login.btn(type='submit') Login
-  
+
