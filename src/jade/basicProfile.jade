@@ -1,0 +1,32 @@
+h3 Basic Information
+table.table.table-condensed.table-striped
+	thead
+		tr
+			td
+			td
+				a#editBasicProfile edit
+	tbody
+		tr
+			th First Name
+			td= first_name
+		tr
+			th Last Name
+			td= last_name
+		tr 
+			th Gender
+			- if (gender==1)
+				td male
+			- else
+				td female
+		tr
+			th Lauguages
+			td= language
+		tr 
+			th Fields of Work
+			td= job
+		tr
+			th Locations of work
+			td=location
+		tr
+			th Target Populations
+			td=target

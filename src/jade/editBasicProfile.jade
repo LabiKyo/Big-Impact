@@ -1,0 +1,43 @@
+form.form-horizontal
+	fieldest
+		div.control-group
+			label.control-label(for="first_name") First Name:
+			div.controls
+				input.input-xlarge(name="first_name",type="text")
+		div.control-group
+			label.control-label(for="last_name") Last Name:
+			div.controls
+				input.input-xlarge(name="last_name",type="text")
+		div.control-group
+			label.control-label Gender:
+			div.controls
+				label.radio.inline
+					input#maleRadio(name="genderRadios",type="radio",checked,value=1)
+					| male
+				label.radio.inline
+					input#femaleRadio(name="genderRadios",type="radio",value=0)
+					| female
+		div.control-group
+			label.control-label(for="language") Lauguage:
+			div.controls
+				input.input-xlarge(name="language",type="text")
+				p.help-block Please Input Lauguage that you speak
+		div.control-group
+			label.control-label(for="workFidles") Work Fields:
+			div.controls
+				input.input-xlarge(name="workFidles",type="text")
+				p.help-block Please Input Fields of work
+		div.control-group
+			label.control-label(for="workLocations") Work Locations:
+			div.controls
+				input.input-xlarge(name="workLocations",type="text")
+				p.help-block Please Input Locations of work			
+		div.control-group
+			label.control-label(for="targetPopulations") Target Populations:
+			div.controls
+				input.input-xlarge(name="targetPopulations",type="text")
+				p.help-block Please Input Target Populations	
+		div.form-actions
+			button.btn.btn-primary.save Save changes
+			|&nbsp;&nbsp;
+			button.btn.cancel Cancel
