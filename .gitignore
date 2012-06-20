@@ -1,3 +1,4 @@
 node_modules
-build
+build/js/*.js
+build/css/*.css
 docs

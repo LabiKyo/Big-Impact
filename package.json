@@ -12,9 +12,6 @@
   "dependencies": {
   },
   "devDependencies": {
-    "should": "*",
-    "mocha": "*",
-    "cucumber": "*",
     "underscore": "*",
     "jade": "*",
     "less": "*"
