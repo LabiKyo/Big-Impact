@@ -6,6 +6,13 @@ jade = require 'jade'
 _ = require 'underscore'
 
 # test
+task 'feature', 'run cucumber features', ->
+  exec 'cucumber.js', (err, output) ->
+    if err
+      console.log err
+    else
+      console.log output
+###
 task 'test', 'run test', ->
   exec './node_modules/.bin/mocha
   --reporter spec
@@ -15,6 +22,7 @@ task 'test', 'run test', ->
   ./spec/*.coffee', (err, output) ->
     if err
       console.log err
+###
 
 # compile
 task 'compile:less', 'compile less files', ->
@@ -79,14 +87,28 @@ task 'compile', 'compile all', ->
 # watch
 task 'watch', 'watch file changes and auto run tasks', ->
   invoke 'compile'
+  invoke 'feature'
   fs.watch './src/coffee', (event, filename) ->
     invoke 'compile:coffee'
+    invoke 'feature'
 
   fs.watch './src/coffee/view', (event, filename) ->
     invoke 'compile:coffee'
+    invoke 'feature'
 
-  less_watcher = fs.watch './src/less', (event, filename) ->
+  fs.watch './src/less', (event, filename) ->
     invoke 'compile:less'
+    invoke 'feature'
 
-  jade_watcher = fs.watch './src/jade', (event, filename) ->
+  fs.watch './src/jade', (event, filename) ->
     invoke 'compile:jade'
+    invoke 'feature'
+
+  fs.watch './features', ->
+    invoke 'feature'
+
+  fs.watch './features/support', ->
+    invoke 'feature'
+
+  fs.watch './features/step_definitions', ->
+    invoke 'feature'

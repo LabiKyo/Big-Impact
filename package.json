@@ -12,6 +12,7 @@
   "dependencies": {
   },
   "devDependencies": {
+    "zombie": "*",
     "underscore": "*",
     "jade": "*",
     "less": "*"
