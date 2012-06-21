@@ -1,16 +1,16 @@
 class window.View.Index extends Backbone.View
   initialize: =>
-    @
+    # TODO: refactoring this: add validation
+    @urlRoot = @fellowUrl
 
   template: Template.index
 
   render: =>
     @$el.html @template()
-    @
 
   events:
-    'click button[type=submit]': 'submit'
-    'change input[type=checkbox]': 'toggleAdmin'
+    'click .login button[type=submit]': 'submit'
+    'change .login input[type=checkbox]': 'toggleAdmin'
 
   adminUrl: '/AdminLogin'
   fellowUrl: '/MemberLogin'
