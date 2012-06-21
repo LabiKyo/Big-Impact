@@ -4,3 +4,5 @@ Backbone.sync = (method, model, options) ->
   switch method
     when 'create'
       $.getJSON urlRoot + model.urlRoot, model.toJSON(), options.success
+    when 'read'
+      $.getJSON urlRoot + model.urlRoot, options.success

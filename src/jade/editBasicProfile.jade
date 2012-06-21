@@ -1,0 +1,43 @@
+form.form-horizontal
+  fieldest
+    div.control-group
+      label.control-label(for="first_name") First Name:
+      div.controls
+        input.input-xlarge(name="first_name",type="text",value="#{first_name}")
+    div.control-group
+      label.control-label(for="last_name") Last Name:
+      div.controls
+        input.input-xlarge(name="last_name",type="text", value="#{last_name}")
+    div.control-group
+      label.control-label Gender:
+      div.controls
+        label.radio.inline
+          input#maleRadio(name="gender",type="radio",checked,value=1)
+          | male
+        label.radio.inline
+          input#femaleRadio(name="gender",type="radio",value=0)
+          | female
+    div.control-group
+      label.control-label(for="language") Lauguage:
+      div.controls
+        input.input-xlarge(name="language",type="text", value="#{language}")
+        p.help-block Please Input Lauguage that you speak
+    div.control-group
+      label.control-label(for="job") Work Fields:
+      div.controls
+        input.input-xlarge(name="job",type="text", value="#{job}")
+        p.help-block Please Input Fields of work
+    div.control-group
+      label.control-label(for="location") Work Locations:
+      div.controls
+        input.input-xlarge(name="location",type="text", value="#{location}")
+        p.help-block Please Input Locations of work
+    div.control-group
+      label.control-label(for="target") Target Populations:
+      div.controls
+        input.input-xlarge(name="target",type="text", value="#{target}")
+        p.help-block Please Input Target Populations
+    div.form-actions
+      button.btn.btn-primary.save Save changes
+      |&nbsp;&nbsp;
+      button.btn.cancel Cancel

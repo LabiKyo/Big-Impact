@@ -26,3 +26,13 @@ class window.Model.NavBarItem extends Backbone.Model
 
   inactive: =>
     @set 'is_active', false
+
+class window.Model.Fellow extends Backbone.Model
+  urlRoot: '/ht/thisMember/'
+  validate: =>
+    return
+  initialize: (callback) =>
+    @fetch
+      success: callback
+      error: =>
+        console.log 'error'

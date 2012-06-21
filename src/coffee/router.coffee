@@ -23,4 +23,12 @@ class window.Router.App extends Backbone.Router
   index: page 'index'
   activities: page 'activities'
   admin: page 'admin'
-  profile: page 'profile'
+  profile: =>
+    unless view.profile?
+      window.view.profile = new View.Profile
+        el: $ 'section#content'
+    collection.navbar.profile()
+    view.navbar.render()
+    unless model.currentFellow?
+      window.model.currentFellow = new Model.Fellow =>
+        view.profile.render()
