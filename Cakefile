@@ -41,6 +41,7 @@ task 'compile:less', 'compile less files', ->
 task 'compile:coffee', 'compile coffee-scripts', ->
   files = [
     'view/layout',
+    'view/message',
     'view/navbar',
     'view/index',
     'view/admin',
@@ -87,28 +88,14 @@ task 'compile', 'compile all', ->
 # watch
 task 'watch', 'watch file changes and auto run tasks', ->
   invoke 'compile'
-  invoke 'feature'
   fs.watch './src/coffee', (event, filename) ->
     invoke 'compile:coffee'
-    invoke 'feature'
 
   fs.watch './src/coffee/view', (event, filename) ->
     invoke 'compile:coffee'
-    invoke 'feature'
 
   fs.watch './src/less', (event, filename) ->
     invoke 'compile:less'
-    invoke 'feature'
 
   fs.watch './src/jade', (event, filename) ->
     invoke 'compile:jade'
-    invoke 'feature'
-
-  fs.watch './features', ->
-    invoke 'feature'
-
-  fs.watch './features/support', ->
-    invoke 'feature'
-
-  fs.watch './features/step_definitions', ->
-    invoke 'feature'

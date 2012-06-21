@@ -6,4 +6,3 @@ class window.View.NavBar extends Backbone.View
     template = @template
       items: @collection.models
     @$el.html template
-
