@@ -23,15 +23,18 @@ class window.View.Admin extends Backbone.View
       @urlRoot = @fellowUrl
 
   submit: =>
+    data =
+      email: $('input[name=email]').val()
+    console.log JSON.stringify(data)
     $.ajax '/api' + @urlRoot,
+      type: "POST"
       data:
-        email: $('input[name=email]').val()
-        password: $('input[name=password]').val()
+        json: JSON.stringify(data)
       success: (data, status, xhr) ->
         if @urlRoot is @adminUrl
-          # TODO: alert success
+          view.message.success 'User created!'
         else
-          # TODO: alert fail
+          view.message.error 'User created failed!'
       error: (xhr, status, error) ->
         console.log 'login failed!'
     false
