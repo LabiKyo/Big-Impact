@@ -1,4 +1,7 @@
 class window.View.BasicProfile extends Backbone.View
+  el: '#basicProfile'
+  initialize: =>
+    @render()
   template: Template.basicProfile
   editTemplate:Template.editBasicProfile
   events:
@@ -8,32 +11,25 @@ class window.View.BasicProfile extends Backbone.View
   fellow: =>
     model.currentFellow.toJSON()
   render: =>
-    console.log 'render basic profile'
     @$el.html @template(@fellow())
-    @
   edit: (event) =>
-    console.log 'editing the basic profile'
     @$el.html @editTemplate(@fellow())
     event.preventDefault()
 
   save: =>
-    console.log 'save basic profile'
     #获取表单的所有内容
-    console.log @$el.children()
     @$el.html @template(@fellow())
 
   cancel: =>
-    console.log 'cancel'
     @$el.html @template(@fellow())
 
 class window.View.Profile extends Backbone.View
+  el: 'section#content'
   initialize: =>
-    @model = model.currentFellow
+    @model = window.model.currentFellow = new Model.Fellow =>
+      @render()
   template: Template.profile
   render: =>
     @$el.html @template()
-    #init the basic profileview
-    window.view.basicProfile = new View.BasicProfile
-      el: $ '#basicProfile'
+    @basicProfile = window.view.basicProfile = new View.BasicProfile
     @basicProfileView = view.basicProfile
-    @basicProfileView.render()

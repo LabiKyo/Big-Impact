@@ -1,27 +1,33 @@
 class window.View.Message extends Backbone.View
-  initialize: =>
-    @
+  el: '#message'
   template: Template.message
+
+  # mapping
+  mapping:
+    warning: 'Warning! '
+    error: 'Error! '
+    success: 'Success! '
+    info: 'Info: '
+
+  # events
   events:
-    'click #message .close': 'close'
+    'click .close': 'close'
 
   close: (event) =>
-    $elem = $ event.currentTarget
-    $elem.closest('.alert').remove()
+    $alert = $(event.currentTarget).closest('.alert')
+    $alert.fadeOut =>
+      $alert.remove()
 
+  # UI utils
   alert: (type, message) =>
-    mapping =
-      warning: 'Warning! '
-      error: 'Error! '
-      success: 'Success! '
-      info: 'Info: '
-    title = mapping[type]
+    title = @mapping[type]
     html = @template
       type: type
       message: message
       title: title
-    console.log  html
-    @$el.append html
+    $alert = $ html
+    @$el.append($alert)
+    $alert.fadeIn()
 
   warning: (message) =>
     @alert 'warning', message

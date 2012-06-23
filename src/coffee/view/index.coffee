@@ -1,24 +1,25 @@
 class window.View.Index extends Backbone.View
+  el: '#content'
+  template: Template.index
   initialize: =>
     # TODO: refactoring this: add validation
     @urlRoot = @fellowUrl
-
-  template: Template.index
-
+    @render()
   render: =>
     @$el.html @template()
 
-  events:
-    'click .login button[type=submit]': 'submit'
-    'change .login input[type=checkbox]': 'toggleAdmin'
-
+  # urls
   adminUrl: '/auth/AdminLogin'
   fellowUrl: '/auth/MemberLogin'
 
   # events
+  events:
+    'click button[type=submit]': 'submit'
+    'change input[type=checkbox]': 'toggleAdmin'
+
   toggleAdmin: (event) =>
     $elem = $ event.currentTarget
-    if $elem.val()
+    if $elem.is ':checked'
       @urlRoot = @adminUrl
     else
       @urlRoot = @fellowUrl
@@ -30,13 +31,11 @@ class window.View.Index extends Backbone.View
         email: $('input[name=email]').val()
         password: $('input[name=password]').val()
       success: (data, status, xhr) =>
-        console.log @urlRoot, @adminUrl
         if @urlRoot is @adminUrl
-          router.navigate 'admin', trigger: true
+          router.navigate 'admin', true
           view.message.success 'Login success!'
         else
-          router.navigate 'profile', trigger: true
+          router.navigate 'profile', true
           view.message.success 'Login success!'
       error: (xhr, status, error) =>
-        console.log 'login failed!', error
     false

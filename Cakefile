@@ -65,7 +65,6 @@ task 'compile:coffee', 'compile coffee-scripts', ->
 task 'compile:jade', 'compile jade to javascript function', ->
   template_dir = './src/jade/'
   options =
-    compilerDebug: true
     client: true
   target = 'window.Template = {};\n'
   files = fs.readdirSync template_dir
