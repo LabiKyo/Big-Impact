@@ -6,23 +6,6 @@ jade = require 'jade'
 _ = require 'underscore'
 
 # test
-task 'feature', 'run cucumber features', ->
-  exec 'cucumber.js', (err, output) ->
-    if err
-      console.log err
-    else
-      console.log output
-###
-task 'test', 'run test', ->
-  exec './node_modules/.bin/mocha
-  --reporter spec
-  --compilers coffee:coffee-script
-  --require should
-  --slow 75
-  ./spec/*.coffee', (err, output) ->
-    if err
-      console.log err
-###
 
 # compile
 task 'compile:less', 'compile less files', ->
@@ -35,7 +18,7 @@ task 'compile:less', 'compile less files', ->
       console.log err
     else
       target = tree.toCSS(compress: true)
-      fs.writeFileSync './build/css/main.css', target, 'utf-8'
+      fs.writeFileSync './public/css/main.css', target, 'utf-8'
       console.log 'compile:less success!'
 
 task 'compile:coffee', 'compile coffee-scripts', ->
@@ -53,7 +36,7 @@ task 'compile:coffee', 'compile coffee-scripts', ->
     'sync',
     'main'
   ]
-  script = 'coffee -bj build/js/main.js -c '
+  script = 'coffee -bj public/js/main.js -c '
   for file in files
     script += "src/coffee/#{file}.coffee "
   exec script, (err, output) ->
@@ -76,7 +59,7 @@ task 'compile:jade', 'compile jade to javascript function', ->
     fn = jade.compile src, o
     target += "window.Template.#{name} = #{fn.toString()};\n\n"
 
-  fs.writeFileSync './build/js/templates.js', target, 'utf-8'
+  fs.writeFileSync './public/js/templates.js', target, 'utf-8'
   console.log 'compile:jade success!'
 
 task 'compile', 'compile all', ->

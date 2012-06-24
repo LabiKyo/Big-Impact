@@ -1,4 +1,6 @@
 node_modules
 build/js/*.js
 build/css/*.css
+public/js/*.js
+public/css/*.css
 docs
