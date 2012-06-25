@@ -31,6 +31,7 @@ class window.Model.Fellow extends Backbone.Model
   urlRoot: '/fellow/'
   idAttribute: 'url_token'
   initialize: (callback) =>
+
     @fetch
       success: callback
       error: =>

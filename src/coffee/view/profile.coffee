@@ -25,15 +25,19 @@ class window.View.BasicProfile extends Backbone.View
     event.stopPropagation()
     @$el.html @editTemplate(@get_fellow_data())
 
-  save: =>
+  save: (event) =>
+    event.preventDefault()
+    event.stopPropagation()
     data_array = @$('form').serializeArray()
     data = {}
     for field in data_array
       data[field.name] = field.value
     @fellow.save data,
-      success: =>
+      success: (model, response) =>
+        view.message.success 'Update success!'
         @$el.html @template(@get_fellow_data())
-    false
+      error: (model, response) =>
+        console.log model, response
 
   cancel: =>
     @$el.html @template(@get_fellow_data())
