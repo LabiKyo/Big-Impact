@@ -3,14 +3,15 @@ class window.View.Admin extends Backbone.View
   template: Template.admin
   initialize: =>
     # TODO: refactoring this: add validation
-    @urlRoot = @fellowUrl
+    @checkbox = @$ 'input[type=checkbox]'
+    @is_admin = @checkbox.is ':checked'
     @render()
   render: =>
     @$el.html @template()
 
   # urls
-  adminUrl: '/wxy/admin'
-  fellowUrl: '/wxy/member'
+  adminUrl: '/admin'
+  fellowUrl: '/fellow'
 
   # events
   events:
@@ -18,23 +19,27 @@ class window.View.Admin extends Backbone.View
     'change input[type=checkbox]': 'toggleAdmin'
 
   toggleAdmin: (event) =>
-    $elem = $ event.currentTarget
-    if $elem.is ':checked'
-      @urlRoot = @adminUrl
-    else
-      @urlRoot = @fellowUrl
+    @is_admin = not @is_admin
 
-  submit: =>
+  submit: (event) =>
+    event.preventDefault()
+    event.stopPropagation()
     data =
       email: $('input[name=email]').val()
-    $.ajax '/api' + @urlRoot,
+    url = '/api/v1'
+    if @is_admin
+      url += @adminUrl
+    else
+      url += @fellowUrl
+    $.ajax
+      url: url
       type: "POST"
       data:
         json: JSON.stringify(data)
       success: (data, status, xhr) =>
-        if @urlRoot is @adminUrl
-          view.message.success 'User created!'
+        if @is_admin
+          view.message.success 'Admin account created!'
         else
-          view.message.error 'User created failed!'
+          view.message.error 'Fellow account created!'
       error: (xhr, status, error) =>
-    false
+        console.log 'Account created fail: ', error

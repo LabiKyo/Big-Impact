@@ -3,14 +3,16 @@ class window.View.Index extends Backbone.View
   template: Template.index
   initialize: =>
     # TODO: refactoring this: add validation
-    @urlRoot = @fellowUrl
+    # dom
+    @checkbox = @$ 'input[type=checkbox]'
+    @is_admin = @checkbox.is ':checked'
     @render()
   render: =>
     @$el.html @template()
 
-  # urls
-  adminUrl: '/auth/AdminLogin'
-  fellowUrl: '/auth/MemberLogin'
+
+  # url
+  urlRoot: '/session'
 
   # events
   events:
@@ -18,24 +20,25 @@ class window.View.Index extends Backbone.View
     'change input[type=checkbox]': 'toggleAdmin'
 
   toggleAdmin: (event) =>
-    $elem = $ event.currentTarget
-    if $elem.is ':checked'
-      @urlRoot = @adminUrl
-    else
-      @urlRoot = @fellowUrl
+    @is_admin = not @is_admin
 
-  submit: =>
-    $.ajax '/api' + @urlRoot,
+  submit: (event) =>
+    event.preventDefault()
+    event.stopPropagation()
+    data =
+      email: $('input[name=email]').val()
+      password: $('input[name=password]').val()
+      auth: if @is_admin then '0' else '1'
+    $.ajax '/api/v1' + @urlRoot,
       type: 'POST'
       data:
-        email: $('input[name=email]').val()
-        password: $('input[name=password]').val()
+        json: JSON.stringify data
       success: (data, status, xhr) =>
-        if @urlRoot is @adminUrl
+        if @is_admin
           router.navigate 'admin', true
           view.message.success 'Login success!'
         else
           router.navigate 'profile', true
           view.message.success 'Login success!'
       error: (xhr, status, error) =>
-    false
+        console.log error

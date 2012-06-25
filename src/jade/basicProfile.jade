@@ -4,7 +4,7 @@ table.table.table-condensed.table-striped
     tr
       td
       td
-        a#editBasicProfile(href="#") edit
+        a.edit(href="#") edit
   tbody
     tr
       th First Name
@@ -14,7 +14,7 @@ table.table.table-condensed.table-striped
       td= last_name
     tr
       th Gender
-      - if (gender==1)
+      - if (gender == 1)
         td male
       - else
         td female
@@ -26,7 +26,7 @@ table.table.table-condensed.table-striped
       td= job
     tr
       th Locations of work
-      td=location
+      td= location
     tr
       th Target Populations
-      td=target
+      td= target

@@ -1,7 +1,6 @@
 class window.View.NavBar extends Backbone.View
   el: 'ul.nav'
-  initialize: =>
-    @collection = window.collection.navbar = new Collection.NavBar
+  initialize: (@collection) =>
     @collection.on 'change', @render
     @render()
   template: Template.navbar

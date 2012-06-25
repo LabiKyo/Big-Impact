@@ -8,5 +8,6 @@ class window.View.Layout extends Backbone.View
     @render()
   render: =>
     @$el.html @template()
-    @navbar = window.view.navbar = new View.NavBar
+    @collection = window.collection.navbar = new Collection.NavBar
+    @navbar = window.view.navbar = new View.NavBar @collection
     @message = window.view.message = new View.Message

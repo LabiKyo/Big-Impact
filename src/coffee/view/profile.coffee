@@ -1,35 +1,49 @@
 class window.View.BasicProfile extends Backbone.View
-  el: '#basicProfile'
-  initialize: =>
+  el: '#basic-profile'
+  initialize: (@fellow) =>
     @render()
+
+  # templates
   template: Template.basicProfile
   editTemplate:Template.editBasicProfile
-  events:
-    'click #basicProfile #editBasicProfile': 'edit'
-    'click #basicProfile .save': 'save'
-    'click #basicProfile .cancel': 'cancel'
-  fellow: =>
-    model.currentFellow.toJSON()
+
   render: =>
-    @$el.html @template(@fellow())
+    @$el.html @template(@get_fellow_data())
+
+  # data
+  get_fellow_data: =>
+    @fellow.toJSON()
+
+  # events
+  events:
+    'click .edit': 'edit'
+    'click .save': 'save'
+    'click .cancel': 'cancel'
+
   edit: (event) =>
-    @$el.html @editTemplate(@fellow())
     event.preventDefault()
+    event.stopPropagation()
+    @$el.html @editTemplate(@get_fellow_data())
 
   save: =>
-    #获取表单的所有内容
-    @$el.html @template(@fellow())
+    data_array = @$('form').serializeArray()
+    data = {}
+    for field in data_array
+      data[field.name] = field.value
+    @fellow.save data,
+      success: =>
+        @$el.html @template(@get_fellow_data())
+    false
 
   cancel: =>
-    @$el.html @template(@fellow())
+    @$el.html @template(@get_fellow_data())
 
 class window.View.Profile extends Backbone.View
-  el: 'section#content'
+  el: '#content'
   initialize: =>
-    @model = window.model.currentFellow = new Model.Fellow =>
+    @model = window.model.fellow = new Model.Fellow =>
       @render()
   template: Template.profile
   render: =>
     @$el.html @template()
-    @basicProfile = window.view.basicProfile = new View.BasicProfile
-    @basicProfileView = view.basicProfile
+    @basicProfile = new View.BasicProfile @model

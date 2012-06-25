@@ -3,7 +3,7 @@ window.collection = {}
 
 class window.Collection.NavBar extends Backbone.Collection
   model: window.Model.NavBarItem
-  initialize: =>
+  initialize: (callback) =>
     @add [
       name: 'index'
     ,
@@ -13,6 +13,7 @@ class window.Collection.NavBar extends Backbone.Collection
     ,
       name: 'profile'
     ]
+    callback?()
 
   hideAll: =>
     @all (item) =>

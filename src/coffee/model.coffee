@@ -3,10 +3,10 @@ window.model = {}
 
 class window.Model.NavBarItem extends Backbone.Model
   upperName: =>
-    name = @name()
+    name = @get_name()
     name[0] + name[1..-1]
 
-  name: =>
+  get_name: =>
     @attributes.name
 
   is_show: =>
@@ -28,9 +28,8 @@ class window.Model.NavBarItem extends Backbone.Model
     @set 'is_active', false
 
 class window.Model.Fellow extends Backbone.Model
-  urlRoot: '/ht/thisMember/'
-  validate: =>
-    return
+  urlRoot: '/fellow/'
+  idAttribute: 'url_token'
   initialize: (callback) =>
     @fetch
       success: callback
