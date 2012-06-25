@@ -36,3 +36,5 @@ class window.Model.Fellow extends Backbone.Model
       success: callback
       error: =>
         console.log 'error'
+
+# TODO: use session for auth

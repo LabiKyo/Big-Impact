@@ -25,7 +25,9 @@ class window.View.Admin extends Backbone.View
     event.preventDefault()
     event.stopPropagation()
     data =
-      email: $('input[name=email]').val()
+      email: @$('input[name=email]').val()
+      first_name: @$('input[name=first_name]').val()
+      last_name: @$('input[name=last_name]').val()
     url = '/api/v1'
     if @is_admin
       url += @adminUrl
@@ -40,6 +42,6 @@ class window.View.Admin extends Backbone.View
         if @is_admin
           view.message.success 'Admin account created!'
         else
-          view.message.error 'Fellow account created!'
+          view.message.success 'Fellow account created!'
       error: (xhr, status, error) =>
-        console.log 'Account created fail: ', error
+        view.message.error JSON.parse(xhr.responseText).error

@@ -6,6 +6,7 @@ page = (cls, callback) ->
 
 class window.Router extends Backbone.Router
   initialize: =>
+    # TODO: add session filter
     @navbar = collection.navbar
     @on 'route:index', @navbar.index
     @on 'route:admin', @navbar.admin
