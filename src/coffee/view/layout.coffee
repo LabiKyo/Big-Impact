@@ -11,3 +11,5 @@ class window.View.Layout extends Backbone.View
     @collection = window.collection.navbar = new Collection.NavBar
     @navbar = window.view.navbar = new View.NavBar @collection
     @message = window.view.message = new View.Message
+    @modal = window.view.modal = new View.Modal
+    @

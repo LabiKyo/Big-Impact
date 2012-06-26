@@ -1,7 +1,7 @@
 class window.View.Activities extends Backbone.View
+  el: '#content'
   initialize: =>
     @render()
-  el: 'section#content'
   template: Template.activities
   render: =>
     @$el.html @template()
