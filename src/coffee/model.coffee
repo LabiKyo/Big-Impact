@@ -32,7 +32,7 @@ class window.Model.Fellow extends Backbone.Model
   idAttribute: 'url_token'
   initialize: (callback) =>
     @fetch
-      success: callback?()
+      success: callback
       error: =>
         console.log 'error'
 
@@ -42,6 +42,7 @@ class window.Model.Offer extends Backbone.Model
   urlRoot: '/offer'
   initialize: (callback) =>
     @fetch 
-      success: callback?()
+      success: =>
+        #callback
       error : =>
         console.log 'error'

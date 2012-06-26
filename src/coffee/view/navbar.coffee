@@ -11,4 +11,4 @@ class window.View.NavBar extends Backbone.View
       items: @collection.models
     @$el.html template
   createOffer: =>
-    view.modal.createOfferModel()
+    view.modal.showOfferModal()

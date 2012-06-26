@@ -2,11 +2,14 @@ class window.View.OffersList extends Backbone.View
   template: Template.offerList
   el: '#feedsContent'
   initialize: =>
-    @offers= new Collection.OfferList(
-      =>
+    @offers= new Collection.OfferList
+    @offers.fetch
+      success: =>
         @render()
-    )
     @
   render: =>
-    @$el.html @template(@offers.toJSON())
+    console.log 'rednering'
+    @$el.html @template(
+      offers: @offers.toJSON()
+    )
     @
