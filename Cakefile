@@ -33,6 +33,7 @@ task 'compile:coffee', 'compile coffee-scripts', ->
     'view/modal'
     'view/createOfferModal',
     'view/offersList',
+    'view/offerDetail',
     'model',
     'collection',
     'router',

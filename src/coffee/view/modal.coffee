@@ -3,8 +3,9 @@ class window.View.Modal extends Backbone.View
   offerTemplate: Template.createOffer
   initialize: =>
     @
-  showOfferModal:=>
+  showOfferModal: (callback)=>
     @offerModel?= new View.CreateOfferModal
     console.log 'show offer modal'
     @offerModel.render()
+    callback?()
     @

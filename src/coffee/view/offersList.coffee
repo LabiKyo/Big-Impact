@@ -8,7 +8,7 @@ class window.View.OffersList extends Backbone.View
         @render()
     @
   render: =>
-    console.log 'rednering'
+    console.log @offers.toJSON()
     @$el.html @template(
       offers: @offers.toJSON()
     )
