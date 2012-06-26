@@ -15,6 +15,9 @@ class window.View.Message extends Backbone.View
 
   close: (event) =>
     $alert = $(event.currentTarget).closest('.alert')
+    @destroy $alert
+
+  destroy: ($alert) =>
     $alert.fadeOut =>
       $alert.remove()
 
@@ -28,6 +31,9 @@ class window.View.Message extends Backbone.View
     $alert = $ html
     @$el.append($alert)
     $alert.fadeIn()
+    setTimeout =>
+      @destroy $alert
+    , 3000
 
   warning: (message) =>
     @alert 'warning', message

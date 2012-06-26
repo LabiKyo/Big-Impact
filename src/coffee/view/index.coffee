@@ -4,9 +4,9 @@ class window.View.Index extends Backbone.View
   initialize: =>
     # TODO: refactoring this: add validation
     # dom
+    @render()
     @checkbox = @$ 'input[type=checkbox]'
     @is_admin = @checkbox.is ':checked'
-    @render()
   render: =>
     @$el.html @template()
 
@@ -36,9 +36,9 @@ class window.View.Index extends Backbone.View
       success: (data, status, xhr) =>
         if @is_admin
           router.navigate 'admin', true
-          view.message.success 'Login success!'
         else
           router.navigate 'profile', true
-          view.message.success 'Login success!'
+        view.message.success 'Login success!'
       error: (xhr, status, error) =>
         console.log error
+        view.message.error 'Email or password is not correct!'

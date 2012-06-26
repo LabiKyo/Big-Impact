@@ -3,9 +3,9 @@ class window.View.Admin extends Backbone.View
   template: Template.admin
   initialize: =>
     # TODO: refactoring this: add validation
+    @render()
     @checkbox = @$ 'input[type=checkbox]'
     @is_admin = @checkbox.is ':checked'
-    @render()
   render: =>
     @$el.html @template()
 
