@@ -1,5 +1,7 @@
 class window.View.NavBar extends Backbone.View
   el: 'ul.nav'
+  events:
+    'click #createOffer': 'createOffer'
   initialize: (@collection) =>
     @collection.on 'change', @render
     @render()
@@ -8,3 +10,5 @@ class window.View.NavBar extends Backbone.View
     template = @template
       items: @collection.models
     @$el.html template
+  createOffer: =>
+    view.modal.showOfferModal()

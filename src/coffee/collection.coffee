@@ -53,3 +53,13 @@ class window.Collection.NavBar extends Backbone.Collection
     @hideAll()
     @active 'activities'
     @show 'profile'
+    
+class window.Collection.OfferList extends Backbone.Collection
+  model: window.Model.Offer
+  url: ->
+    '/offer'
+  initialize: (callback) =>
+    callback?()
+    @
+  
+  

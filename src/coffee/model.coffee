@@ -31,10 +31,18 @@ class window.Model.Fellow extends Backbone.Model
   urlRoot: '/fellow/'
   idAttribute: 'url_token'
   initialize: (callback) =>
-
     @fetch
       success: callback
       error: =>
         console.log 'error'
 
-# TODO: use session for auth
+
+class window.Model.Offer extends Backbone.Model
+  idAttribute: 'url_token'
+  urlRoot: '/offer'
+  initialize: (callback) =>
+    @fetch 
+      success: =>
+        #callback
+      error : =>
+        console.log 'error'

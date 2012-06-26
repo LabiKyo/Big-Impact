@@ -30,6 +30,9 @@ task 'compile:coffee', 'compile coffee-scripts', ->
     'view/admin',
     'view/activities',
     'view/profile',
+    'view/modal'
+    'view/createOfferModal',
+    'view/offersList',
     'model',
     'collection',
     'router',

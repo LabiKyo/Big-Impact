@@ -1,0 +1,40 @@
+#createOfferModal.modal.hide.fade.in(style="display: none")
+  .modal-header
+    button.close(type="button",data-dismiss="modal") x
+    h3
+      |Create Your Offer
+  .modal-body
+    form.form-horizontal
+      fieldset
+        .control-group
+          label.control-label(for="title") Title
+          .controls
+            input.input-xlarge(name="title",type="text")
+            p.help-block
+              |Please Input the title of your title
+        .control-group
+          label.control-label(for="description") Description
+          .controls
+            textarea.input-xlarge(name="description",type="text",rows="3")
+            p.help-block
+              |Please Input the title of your title
+        .control-group
+          label.control-label(for="fields") Fields
+          .controls
+            input.input-xlarge(name="fields",type="text")
+            p.help-block
+        .control-group
+          label.control-label(for="locations") Locations
+          .controls
+            input.input-xlarge(name="locations",type="text")
+            p.help-block
+        .control-group
+          labeeldset
+        .control-group
+          lal.control-label(for="target") Target
+          .controls
+            input.input-xlarge(name="target",type="text")
+            p.help-block
+  .modal-footer
+    a.btn(href="#",data-dismiss="modal") Cancel
+    a.btn.btn-primary.save(href="#") Create Offer

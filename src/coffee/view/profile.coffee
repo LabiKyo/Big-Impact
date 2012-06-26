@@ -5,7 +5,7 @@ class window.View.BasicProfile extends Backbone.View
 
   # templates
   template: Template.basicProfile
-  editTemplate:Template.editBasicProfile
+  editTemplate: Template.editBasicProfile
 
   render: =>
     @$el.html @template(@get_fellow_data())
