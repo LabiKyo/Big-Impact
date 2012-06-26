@@ -9,7 +9,7 @@ Backbone.sync = (method, model, options) ->
         succuess: options.success
         type: 'PUT'
     when 'read'
-      $.getJSON urlRoot + model.urlRoot, options.success
+        $.getJSON urlRoot + model.urlRoot, options.success
     when 'delete'
       $.ajax urlRoot + model.urlRoot
         data: model.toJSON()

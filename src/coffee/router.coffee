@@ -17,8 +17,11 @@ class window.Router extends Backbone.Router
     'activities': 'activities'
     'admin': 'admin'
     'profile': 'profile'
+    'offers/recently': 'offers'
 
   index: page 'Index'
   activities: page 'Activities'
   admin: page 'Admin'
   profile: page 'Profile'
+  offers: page 'OffersList'
+  
