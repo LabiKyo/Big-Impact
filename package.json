@@ -12,6 +12,9 @@
   "dependencies": {
   },
   "devDependencies": {
+    "zombie": "*",
+    "cucumber": "*",
+    "should": "*",
     "underscore": "*",
     "jade": "*",
     "less": "*"

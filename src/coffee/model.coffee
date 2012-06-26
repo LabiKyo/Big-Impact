@@ -31,10 +31,12 @@ class window.Model.Fellow extends Backbone.Model
   urlRoot: '/fellow/'
   idAttribute: 'url_token'
   initialize: (callback) =>
+
     @fetch
       success: callback?()
       error: =>
         console.log 'error'
+
 
 class window.Model.Offer extends Backbone.Model
   idAttribute: 'url_token'

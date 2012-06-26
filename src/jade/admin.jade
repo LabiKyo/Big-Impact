@@ -9,6 +9,16 @@ form.form-horizontal.well.span6.offset3
       .controls
         input.input-large(name='email',type='email',placeholder='Email')
     .control-group
+      label.control-label(for='first_name')
+        strong First Name
+      .controls
+        input.input-large(name='first_name',type='text',placeholder='First name')
+    .control-group
+      label.control-label(for='last_name')
+        strong Last Name
+      .controls
+        input.input-large(name='last_name',type='text',placeholder='Last name')
+    .control-group
       label.control-label(for='asAdmin') As an admin
       .controls
         input(type='checkbox',name='asAdmin')
