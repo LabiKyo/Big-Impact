@@ -5,14 +5,14 @@
         h2
           |offers
       span.right.createButton
-        button.btn.btn-primary(href="") Create
+        button.btn.btn-primary.create(href="#") Create
     .list
       each offer in offers.models
         .item
           .info.left
             img(src="public/img/60.gif",alt='photo')
             p.inf= offer.attributes.url_token
-              br 
+              br
               | #{offer.get_friendly_time()}
            .offer.left
               .titlehd

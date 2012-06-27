@@ -6,9 +6,12 @@ class window.View.Activities extends Backbone.View
     {activity, id} = options
     unless activity?
       return router.navigate 'activities/offer', true
-    view_name = activity[0].toUpperCase() + activity[1..-1] + 'List' if activity
-    if activity?
-      @current = new View[view_name]
+    # TODO: move to router
+    view_name = activity[0].toUpperCase() + activity[1..-1] if activity
+    if id?
+      @current = new View[view_name + 'Detail'] id
+    if activity? and not id?
+      @current = new View[view_name + 'List']
   template: Template.activities
   render: =>
     @$el.html @template()

@@ -41,6 +41,7 @@ class window.Model.Fellow extends Backbone.Model
 # TODO: use session for auth
 class window.Model.Offer extends Backbone.Model
   idAttribute: 'url_token'
+  urlRoot: '/offer'
   get_friendly_time: =>
     date = new Date parseInt(@attributes.created + '000')
     "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"

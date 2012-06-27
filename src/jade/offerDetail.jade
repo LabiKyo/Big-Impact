@@ -1,18 +1,18 @@
 .hero-unit
-  h2 {title}
-  p {description}
+  h2= title
+  p= description
   address
     strong
-      |fields:&nbsp;&nbsp
-    span.label {fields}
-    br
-  address
-    strong 
-      |location:&nbsp;&nbsp
-    br
-    | {locations}
+      |fields:&nbsp;&nbsp;
+    span.label= fields
     br
   address
     strong
-      |target:&nbsp;&nbsp
-    span.label.label-info {target}  
+      |location:&nbsp;&nbsp;
+    br
+    | #{locations}
+    br
+  address
+    strong
+      |target:&nbsp;&nbsp;
+    span.label.label-info= target

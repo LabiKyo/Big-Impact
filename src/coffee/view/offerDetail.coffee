@@ -1,18 +1,15 @@
 class window.View.OfferDetail extends Backbone.View
   el: '#feedsContent'
   template: Template.offerDetail
-  initialize: (offer_id,callback)=>
+  initialize: (offer_id) =>
     @offer = new Model.Offer
+      url_token: offer_id
     @offer.fetch
       success: =>
-        console.log @offer.toJSON()
         @render()
       error: =>
         console.log 'error'
       data: =>
         offer_id: offer_id
-    callback?()
-    @
   render: =>
-    @$el.html @template()
-    @
+    @$el.html @template(@offer.toJSON())
