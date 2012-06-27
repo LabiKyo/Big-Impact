@@ -34,6 +34,8 @@ class window.Model.Fellow extends Backbone.Model
     @fetch
       success: =>
         $.cookie 'current_user', @attributes.url_token
+        $.cookie 'first_name', @attributes.first_name
+        $.cookie 'last_name', @attributes.last_name
         callback()
       error: =>
         console.log 'error'
@@ -42,9 +44,6 @@ class window.Model.Fellow extends Backbone.Model
 class window.Model.Offer extends Backbone.Model
   idAttribute: 'url_token'
   urlRoot: '/offer'
-  initialize: =>
-    @on 'change', =>
-      @attributes.created = new Date().valueOf().toString()[0...-3]
 
   # getter
   get_friendly_time: =>

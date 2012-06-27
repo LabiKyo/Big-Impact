@@ -5,12 +5,18 @@
 }
 
 body {
-  padding-top: 65px;
+  padding-top: 45px;
   background: url(../img/background.png) repeat-x 0 40px;
 }
 
+#message-wrapper {
+  position: relative;
+  padding-bottom: 45px;
+}
+
 #message {
-  padding-bottom: 25px;
+  position: absolute;
+  z-index: 100;
   .alert {
     margin-bottom: 8px;
   }
@@ -41,7 +47,7 @@ body {
   padding: 10px;
   background: @white;
   }
-  
+
 .inner {
  margin: 10px;
  //padding: 10px 50px;
@@ -90,9 +96,9 @@ body {
   overflow: hidden;
   position: relative;
   }
-  
+
 .item {
-  padding: 10px;  
+  padding: 10px;
   overflow: hidden;
   position: relative;
   border-bottom: 1px solid #D9DCE2;
@@ -105,6 +111,8 @@ body {
 
 .info {
   text-align: center;
+  width: 66px;
+  overflow: hidden;
 }
 .inf {
   font-size: 13px;

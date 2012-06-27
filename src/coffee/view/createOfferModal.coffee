@@ -11,14 +11,18 @@ class window.View.CreateOfferModal extends Backbone.View
   events:
     'click .save': 'saveOffer'
 
-  saveOffer: (callback) =>
+  saveOffer: (events) =>
     data_array = @$('form').serializeArray()
     data = {}
     for field in data_array
       data[field.name] = field.value
-    newOffer = @offers.create data,
+    data.created = new Date().valueOf().toString()[0...-3]
+    data.member_first_name = $.cookie 'first_name'
+    data.member_last_name = $.cookie 'last_name'
+    @offers.create data,
       success: (model, response)=>
         @undelegateEvents()
         @$('#createOfferModal').modal('hide')
       error: (model, response)=>
         console.log 'error'
+    false

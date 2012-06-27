@@ -64,15 +64,11 @@ class window.Collection.OfferList extends Backbone.Collection
         callback()
       error: =>
         console.log 'error'
-    @on 'removed', =>
-      console.log 'removed'
-      @render()
 
   comparator: (offer) =>
-    return -~~offer.attributes.created
+    return -~~offer.get 'created'
 
   loadMore: (callback) =>
-    console.log @last().attributes.created
     @fetch
       success: =>
         callback()

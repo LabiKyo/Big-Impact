@@ -11,9 +11,13 @@ class window.View.OfferList extends Backbone.View
           view.message.success 'Delete offer success!'
         error: =>
           console.log 'remove failed'
-    @offers.on 'change removed', (events) =>
-      console.log 're-render', events
-      @render()
+    @offers.on 'change', (events) =>
+      console.log @offers.length
+      @offers.fetch
+        success: =>
+          @render()
+          console.log @offers.models, @offers.length
+          view.message.success 'Create offer success!'
   render: =>
     @$el.html @template
       offers: @offers

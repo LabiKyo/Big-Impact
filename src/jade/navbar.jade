@@ -2,7 +2,7 @@ each item, i in items
   if item.is_show()
     li(class="#{item.is_active() ? 'active' : ''}")
       a(href="##{item.get_name()}")= item.upperName()
-li.dropdown
+//li.dropdown
   a.dropdown-toggle(href="#",data-toggle="dropdown")
     |Create
     b.caret
