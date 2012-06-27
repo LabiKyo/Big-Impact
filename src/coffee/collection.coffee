@@ -60,6 +60,6 @@ class window.Collection.OfferList extends Backbone.Collection
     '/offer'
   initialize: (callback) =>
     @fetch
-    success: callback
-    error: =>
-      console.log 'error'
+      success: callback
+      error: =>
+        console.log 'error'

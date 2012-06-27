@@ -32,10 +32,15 @@ class window.Model.Fellow extends Backbone.Model
   idAttribute: 'url_token'
   initialize: (callback) =>
     @fetch
-      success: callback
+      success: =>
+        $.cookie 'current_user', @attributes.url_token
+        callback()
       error: =>
         console.log 'error'
 
 # TODO: use session for auth
 class window.Model.Offer extends Backbone.Model
   idAttribute: 'url_token'
+  get_friendly_time: =>
+    date = new Date parseInt(@attributes.created + '000')
+    "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"

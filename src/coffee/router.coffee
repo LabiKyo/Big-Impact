@@ -1,7 +1,7 @@
-window.page = (cls, callback) ->
+window.page = (cls, options, callback) ->
   fn = ->
     @current?.undelegateEvents()
-    @current = new View[cls]
+    @current = new View[cls] options
     callback?()
 
 class window.Router extends Backbone.Router
@@ -16,16 +16,22 @@ class window.Router extends Backbone.Router
   routes:
     '': 'index'
     'activities': 'activities'
+    'activities/:activity': 'activities'
+    'activities/:activity/:id': 'activities'
     'admin': 'admin'
     'profile': 'profile'
-    'offers-recently': 'offers'
     'offers/:offer_id': 'offerDetail'
 
   #page 之间有依赖项，所以应依赖渲染
   index: page 'Index'
-  activities: page 'Activities'
+  activities: (activity, id) ->
+    fn = page 'Activities',
+      activity: activity
+      id: id
+    ,->
+      ''
+    fn()
   admin: page 'Admin'
   profile: page 'Profile'
-  offers: page 'OffersList'
   offerDetail: (offer_id) =>
     new window.View.OfferDetail offer_id
