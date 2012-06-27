@@ -1,4 +1,4 @@
-page = (cls, callback) ->
+window.page = (cls, callback) ->
   fn = ->
     @current?.undelegateEvents()
     @current = new View[cls]
@@ -18,8 +18,15 @@ class window.Router extends Backbone.Router
     'activities': 'activities'
     'admin': 'admin'
     'profile': 'profile'
+    'offers-recently': 'offers'
+    'offers/:offer_id': 'offerDetail'
 
+  #page 之间有依赖项，所以应依赖渲染
   index: page 'Index'
   activities: page 'Activities'
   admin: page 'Admin'
   profile: page 'Profile'
+  offers: page 'OffersList'
+  offerDetail: (offer_id) =>
+    new window.View.OfferDetail offer_id
+  
