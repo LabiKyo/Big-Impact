@@ -21,12 +21,7 @@ class window.View.CreateOfferModal extends Backbone.View
         @$('#createOfferModal').modal('hide')
         #刷新页面
         console.log window.router
-        window.router.navigate 'activities',
-          trigger: true
-          replace: true
-        window.router.navigate 'offers-recently',
-          trigger: true
-          replace: true
+        window.router.navigate 'activities/offer', true
       error: (model,response)=>
         console.log 'error'
     @

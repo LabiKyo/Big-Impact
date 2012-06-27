@@ -33,6 +33,7 @@ class window.Model.Fellow extends Backbone.Model
   initialize: (callback) =>
     @fetch
       success: =>
+        console.log @attributes
         $.cookie 'current_user', @attributes.url_token
         callback()
       error: =>

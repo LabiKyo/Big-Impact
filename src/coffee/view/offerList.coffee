@@ -7,3 +7,11 @@ class window.View.OfferList extends Backbone.View
   render: =>
     @$el.html @template
       offers: @offers
+
+  # events
+  events:
+    'click button.create': 'createOffer'
+
+  createOffer: (event) =>
+    view.modal.showOfferModal()
+    false
