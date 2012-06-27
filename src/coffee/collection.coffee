@@ -60,6 +60,24 @@ class window.Collection.OfferList extends Backbone.Collection
     '/offer'
   initialize: (callback) =>
     @fetch
-      success: callback
+      success: =>
+        callback()
       error: =>
         console.log 'error'
+    @on 'removed', =>
+      console.log 'removed'
+      @render()
+
+  comparator: (offer) =>
+    return -~~offer.attributes.created
+
+  loadMore: (callback) =>
+    console.log @last().attributes.created
+    @fetch
+      success: =>
+        callback()
+      error: =>
+        console.log 'load more failed'
+      data:
+        time_stamp: @last().attributes.created
+      add: true

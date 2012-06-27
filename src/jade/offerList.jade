@@ -8,21 +8,21 @@
         button.btn.btn-primary.create(href="#") Create
     .list
       each offer in offers.models
-        .item
+        .item(data-id="#{offer.attributes.url_token}")
           .info.left
             img(src="public/img/60.gif",alt='photo')
-            p.inf= offer.attributes.url_token
+            p.inf= offer.get_fullname()
               br
               | #{offer.get_friendly_time()}
            .offer.left
               .titlehd
-                .title.left
-                  a(href="#activities/offer/#{offer.attributes.url_token}") #{offer.attributes.title}
-                if $.cookie('current_user') == offer.attributes.url_token
+                if $.cookie('current_user') == offer.attributes.member_id
                   .right.deleteButton
-                    button.close x
+                    button.close ×
+                .title
+                  a(href="#activities/offer/#{offer.attributes.url_token}") #{offer.attributes.title}
               .content
                 p.inf #{offer.attributes.description}
     .add
       span.right
-        a.more(href="") More...
+        a.more(href="#") More...

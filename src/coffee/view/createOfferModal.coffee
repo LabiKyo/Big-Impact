@@ -1,27 +1,24 @@
 class window.View.CreateOfferModal extends Backbone.View
   el: '#modal'
-  events:
-    'click .save': 'saveOffer'
   template: Template.createOffer
-  initialize: =>
-    @
+  initialize: (@offers) =>
+    @render()
   render: =>
     @$el.html @template()
     @$('#createOfferModal').modal('show')
-    @
-  saveOffer: =>
+
+  # events
+  events:
+    'click .save': 'saveOffer'
+
+  saveOffer: (callback) =>
     data_array = @$('form').serializeArray()
     data = {}
     for field in data_array
       data[field.name] = field.value
-    newOffer = new Model.Offer 
-    newOffer.save data,
-      success: (model,response)=>
-        console.log 'success'
+    newOffer = @offers.create data,
+      success: (model, response)=>
+        @undelegateEvents()
         @$('#createOfferModal').modal('hide')
-        #刷新页面
-        console.log window.router
-        window.router.navigate 'activities/offer', true
-      error: (model,response)=>
+      error: (model, response)=>
         console.log 'error'
-    @

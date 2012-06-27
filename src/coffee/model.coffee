@@ -33,7 +33,6 @@ class window.Model.Fellow extends Backbone.Model
   initialize: (callback) =>
     @fetch
       success: =>
-        console.log @attributes
         $.cookie 'current_user', @attributes.url_token
         callback()
       error: =>
@@ -43,6 +42,13 @@ class window.Model.Fellow extends Backbone.Model
 class window.Model.Offer extends Backbone.Model
   idAttribute: 'url_token'
   urlRoot: '/offer'
+  initialize: =>
+    @on 'change', =>
+      @attributes.created = new Date().valueOf().toString()[0...-3]
+
+  # getter
   get_friendly_time: =>
     date = new Date parseInt(@attributes.created + '000')
     "#{date.getFullYear()}-#{date.getMonth() + 1}-#{date.getDate()}"
+  get_fullname: =>
+    "#{@attributes.member_first_name} #{@attributes.member_last_name}"
